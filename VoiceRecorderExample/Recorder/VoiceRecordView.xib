@@ -45,8 +45,6 @@
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1f-ms-6xM">
                                     <rect key="frame" x="2" y="2" width="56" height="56"/>
-                                    <state key="normal" image="ic_record_btn.png"/>
-                                    <state key="selected" image="ic_record_btn_active"/>
                                     <connections>
                                         <action selector="recordBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="k4y-zn-qOs"/>
                                     </connections>
@@ -145,7 +143,5 @@
     <resources>
         <image name="ic_pause_btn.png" width="150" height="150"/>
         <image name="ic_play_btn.png" width="150" height="150"/>
-        <image name="ic_record_btn.png" width="168" height="168"/>
-        <image name="ic_record_btn_active" width="30" height="30"/>
     </resources>
 </document>

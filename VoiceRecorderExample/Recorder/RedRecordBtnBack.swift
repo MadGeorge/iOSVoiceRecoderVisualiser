@@ -22,8 +22,6 @@ class RedRecordBtnBack: UIView, CAAnimationDelegate {
         setup()
     }
     
-    var animationComplete:(()->Void)?
-    
     var isEnabled: Bool = false {
         didSet {
             alpha = isEnabled ? 1.0 : 0.5
@@ -89,7 +87,7 @@ class RedRecordBtnBack: UIView, CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if let a = anim as? CAAnimationGroup {
             if let _ = a.value(forKey: "id") {
-                animationComplete?()
+                //animationComplete?()
             }
         }
     }

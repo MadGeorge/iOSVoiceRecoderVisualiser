@@ -44,10 +44,18 @@ class VoiceRecordView: UIView, AVAudioPlayerDelegate {
         
         view.hideMessageControls()
         
+        view.fixBundleImagesLoading()
+        
         return view
     }
     
-    func setupAudioSession() {
+    // Images from custom bundle rendered in storyboard, but does not loaded on device
+    fileprivate func fixBundleImagesLoading() {
+        playBtn.setImage(UIImage(named: "RecorderResources.bundle/ic_play_btn.png"), for: .normal)
+        playBtn.setImage(UIImage(named: "RecorderResources.bundle/ic_pause_btn.png"), for: .selected)
+    }
+    
+    fileprivate func setupAudioSession() {
         audioPlot.backgroundColor = UIColor.clear
         
         let recoderSettings: [String: AnyObject] = [
@@ -87,7 +95,7 @@ class VoiceRecordView: UIView, AVAudioPlayerDelegate {
         }
     }
     
-    func updateTimeLabel(_ timeFormatted: String) {
+    fileprivate func updateTimeLabel(_ timeFormatted: String) {
         ui {[weak self] in
             self?.timeLabel.text = timeFormatted
         }
@@ -116,7 +124,7 @@ class VoiceRecordView: UIView, AVAudioPlayerDelegate {
         }
     }
     
-    func releaseRecorder() {
+    fileprivate func releaseRecorder() {
         recorder?.stop()
         player?.stop()
         
@@ -217,25 +225,17 @@ class VoiceRecordView: UIView, AVAudioPlayerDelegate {
         pausePlayback()
     }
     
-    @IBAction func recordBtnAction(_ sender: UIButton?) {
-        recordBtnBack.animationComplete = {
-            sender?.alpha = 1
-        }
-        
+    @IBAction func recordBtnAction(_ sender: UIButton?) {        
         switch state {
         case .idle:
             recordBtnBack.animateRecord()
             sender?.isSelected = true
-            sender?.setImage(UIImage(named: "RecorderResources.bundle/ic_record_btn_active"), for: UIControlState())
-            sender?.alpha = 0
             startRecord()
             
         case .record:
             state = .idle
             recordBtnBack.animateStop()
             sender?.isSelected = false
-            sender?.setImage(UIImage(named: "RecorderResources.bundle/ic_record_btn"), for: UIControlState())
-            sender?.alpha = 0
             stopRecord()
             
         case .play:
