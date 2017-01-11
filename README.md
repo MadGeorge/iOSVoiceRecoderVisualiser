@@ -1,5 +1,5 @@
 
 ### Sublime's custom image
 <p align="center">
-<img src="https://github.com/MadGeorge/iOSVoiceRecoderVisualiser/blob/master//screencast.png?raw=true" alt="Sublime's custom image"/>
+<img src="https://github.com/MadGeorge/iOSVoiceRecoderVisualiser/raw/master/ReadmeResources/screencast.gif" alt="Sublime's custom image"/>
 </p>
